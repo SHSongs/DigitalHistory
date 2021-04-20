@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 
+using System;
+using System.IO;
+using System.Collections;
+
 namespace DigitalHistory
 {
     /// <summary>
@@ -11,6 +15,9 @@ namespace DigitalHistory
         public EventGallery()
         {
             InitializeComponent();
+
+            string[] files = Directory.GetFiles(@"C:\");
+            string[] foders = Directory.GetDirectories(@"C:\");
             var Events = GetEvents();
             if (Events.Count > 0)
                 ListViewEvents.ItemsSource = Events;
