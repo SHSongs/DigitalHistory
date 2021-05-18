@@ -4,6 +4,7 @@ using System.Windows;
 using System;
 using System.IO;
 using System.Collections;
+using System.Diagnostics;
 
 namespace DigitalHistory
 {
@@ -16,8 +17,22 @@ namespace DigitalHistory
         {
             InitializeComponent();
 
-            string[] files = Directory.GetFiles(@"C:\");
-            string[] foders = Directory.GetDirectories(@"C:\");
+            string path = @"C:\DHData";
+            string[] files = Directory.GetFiles(path);
+
+
+            foreach (var yearDir in Directory.GetDirectories(@"C:\DHData"))
+            {
+
+                foreach (var dateDir in Directory.GetDirectories(yearDir))
+                {
+                    var gsmEvent = Directory.GetFiles(dateDir);
+                }
+
+                var dir = new DirectoryInfo(yearDir);
+                var dirName = dir.Name;
+            }
+
             var Events = GetEvents();
             if (Events.Count > 0)
                 ListViewEvents.ItemsSource = Events;
